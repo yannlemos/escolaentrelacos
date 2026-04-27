@@ -1,9 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-
-  import musicIcon from "$lib/assets/music-icon.svg";
-  import teatroIcon from "$lib/assets/teatro-icon.svg";
-  import dancaIcon from "$lib/assets/danca-icon.svg";
+  import { base } from "$app/paths"; // Adicione esta importação
 
   let currentHeroImage = $state(0);
   let activeSection = $state("");
@@ -183,7 +180,11 @@
           style:transition-delay="0.1s"
         >
           <div class="icon-frame blue">
-            <img src={musicIcon} alt="Música" class="activity-svg" />
+            <img
+              src="{base}/icon_musica.svg"
+              alt="Música"
+              class="activity-svg"
+            />
           </div>
           <h3 class="activity-title text-blue">Música</h3>
           <p>
@@ -197,7 +198,11 @@
           style:transition-delay="0.2s"
         >
           <div class="icon-frame pink">
-            <img src={teatroIcon} alt="Teatro" class="activity-svg" />
+            <img
+              src="{base}/icon_teatro.svg"
+              alt="Teatro"
+              class="activity-svg"
+            />
           </div>
           <h3 class="activity-title text-pink">Teatro</h3>
           <p>Expressão corporal e improvisação para desenvolver a confiança.</p>
@@ -209,7 +214,7 @@
           style:transition-delay="0.3s"
         >
           <div class="icon-frame orange">
-            <img src={dancaIcon} alt="Dança" class="activity-svg" />
+            <img src="{base}/icon_danca.svg" alt="Dança" class="activity-svg" />
           </div>
           <h3 class="activity-title text-orange">Dança</h3>
           <p>
