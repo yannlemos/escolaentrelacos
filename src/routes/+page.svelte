@@ -307,7 +307,7 @@
 <footer class="footer">
   <div class="container footer-layout">
     <div class="footer-info">
-      <img src="/logo.svg" alt="Escola Entrelaços" class="footer-logo" />
+      <img src="{base}/logo.svg" alt="Escola Entrelaços" class="footer-logo" />
       <p>© 2026 Escola Entrelaços. Todos os direitos reservados.</p>
     </div>
 
