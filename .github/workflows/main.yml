@@ -25,7 +25,10 @@ jobs:
 
       - name: Install dependencies
         run: npm i
-
+        
+      - name: Fix permissions
+        run: chmod +x node_modules/.bin/*
+        
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
