@@ -12,8 +12,7 @@ const config = {
       strict: true
     }),
     paths: {
-      base: process.env.NODE_ENV === 'production' ? '/yannlemos' : '',
-      assets: process.env.NODE_ENV === 'production' ? '/yannlemos' : ''  // Add this line
+      base: process.env.NODE_ENV === 'production' ? '/yannlemos' : ''
     }
   },
   preprocess: vitePreprocess()

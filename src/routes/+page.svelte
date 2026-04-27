@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import musicIcon from "$lib/assets/music-icon.svg?url";
-  import teatroIcon from "$lib/assets/teatro-icon.svg?url";
-  import dancaIcon from "$lib/assets/danca-icon.svg?url";
+  import musicIcon from "$lib/assets/music-icon.svg";
+  import teatroIcon from "$lib/assets/teatro-icon.svg";
+  import dancaIcon from "$lib/assets/danca-icon.svg";
 
   let currentHeroImage = $state(0);
   let activeSection = $state("");
