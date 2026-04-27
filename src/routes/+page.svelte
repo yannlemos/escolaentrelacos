@@ -87,7 +87,7 @@
           isMenuOpen = false;
         }}
       >
-        <img src="/logo.svg" alt="Escola Entrelaços" class="logo-img" />
+        <img src="{base}/logo.svg" alt="Escola Entrelaços" class="logo-img" />
       </a>
     </div>
 
