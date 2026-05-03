@@ -705,8 +705,8 @@
     text-transform: uppercase;
     letter-spacing: 6px; /* Aumentar o espaçamento deixa mais chique */
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    /* color: rgba(255, 255, 255, 0.9); */
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
   }
   .hero-age {
     font-size: 1.1rem;
