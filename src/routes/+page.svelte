@@ -5,6 +5,7 @@
   let currentHeroImage = $state(0);
   let activeSection = $state("");
   let isMenuOpen = $state(false); // <-- Nova variável para o menu
+  let currentMosaicIndex = $state(0); // Estado para o novo carrossel
 
   import hero1 from "$lib/assets/photos/hero/hero_1.jpg";
   import hero2 from "$lib/assets/photos/hero/hero_2.jpg";
@@ -16,8 +17,6 @@
   import qs1 from "$lib/assets/photos/quem-somos/qs_1.jpg";
   import qs2 from "$lib/assets/photos/quem-somos/qs_2.jpg";
   import qs3 from "$lib/assets/photos/quem-somos/qs_3.jpg";
-  import qs4 from "$lib/assets/photos/quem-somos/qs_4.jpg";
-  import qs5 from "$lib/assets/photos/quem-somos/qs_5.jpg";
 
   // Função para fechar o menu ao clicar em um link
   function handleNavClick(id: string) {
@@ -27,7 +26,7 @@
 
   const heroImages = [hero1, hero2, hero3, hero4, hero5, hero6];
 
-  const mosaicImages = [qs1, qs2, qs3, qs4, qs5];
+  const mosaicImages = [qs1, qs2, qs3];
 
   function reveal(node: HTMLElement) {
     const observer = new IntersectionObserver(
@@ -54,6 +53,10 @@
       currentHeroImage = (currentHeroImage + 1) % heroImages.length;
     }, 5000);
 
+    const mosaicInterval = setInterval(() => {
+      currentMosaicIndex = (currentMosaicIndex + 1) % mosaicImages.length;
+    }, 4000);
+
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -68,6 +71,7 @@
 
     return () => {
       clearInterval(interval);
+      clearInterval(mosaicInterval);
       observer.disconnect();
     };
   });
@@ -222,27 +226,28 @@
 
   <section id="quem-somos" class="section orange-bg">
     <div class="container grid-split">
-      <div class="mosaic-container">
-        <div class="mosaic-grid">
-          <div class="mosaic-item big">
-            <enhanced:img src={mosaicImages[0]} alt="" />
-          </div>
-          <div class="mosaic-item big">
-            <enhanced:img src={mosaicImages[1]} alt="" />
-          </div>
-          <div class="mosaic-item big">
-            <enhanced:img src={mosaicImages[2]} alt="" />
-          </div>
-          <div class="mosaic-item big">
-            <enhanced:img src={mosaicImages[3]} alt="" />
-          </div>
-          <div class="mosaic-item big">
-            <enhanced:img src={mosaicImages[4]} alt="" />
+      <!-- Coluna Esquerda: Carrossel Controlado -->
+      <div class="carousel-column">
+        <div class="carousel-wrapper">
+          {#each mosaicImages as image, i}
+            <div class="carousel-slide" class:active={i === currentMosaicIndex}>
+              <enhanced:img src={image} alt="Galeria Escola Entrelaços" />
+            </div>
+          {/each}
+
+          <div class="carousel-dots">
+            {#each mosaicImages as _, i}
+              <div class="dot" class:active={i === currentMosaicIndex}></div>
+            {/each}
           </div>
         </div>
       </div>
+
+      <!-- Coluna Direita: Texto -->
       <div class="text-block">
-        <h2 class="section-title light">Quem Somos</h2>
+        <h2 class="section-title light" style="text-align: left;">
+          Quem Somos
+        </h2>
         <p>
           A Escola Entrelaços nasceu da paixão por unir as artes performáticas
           em um currículo único para crianças e jovens.
@@ -385,13 +390,6 @@
 
   /* Faz as imagens otimizadas preencherem o container como background-cover */
   .hero-bg :global(img),
-  .mosaic-item :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
   .container {
     max-width: 1250px;
     margin: 0 auto;
@@ -730,6 +728,94 @@
   #como-funciona .section-title {
     text-align: center;
   }
+
+  /* Layout de Colunas */
+  .grid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 80px; /* Espaço entre carrossel e texto */
+    align-items: center; /* Centraliza verticalmente */
+  }
+
+  /* Container da Coluna do Carrossel */
+  .carousel-column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* O Carrossel em si */
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 550px; /* Limite máximo para não ficar gigante */
+    aspect-ratio: 1 / 1; /* Mantém o formato quadrado perfeito */
+    border-radius: var(--radius-lg); /* Bordas arredondadas do site */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .carousel-slide :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto preencha o quadrado sem distorcer */
+  }
+
+  /* Dots (Indicadores) */
+  .carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+  }
+
+  .dot.active {
+    background: white;
+    transform: scale(1.3);
+  }
+
+  /* Ajuste para Mobile */
+  @media (max-width: 1100px) {
+    .grid-split {
+      grid-template-columns: 1fr; /* Empilha as colunas */
+      gap: 40px;
+      text-align: center;
+    }
+
+    .carousel-wrapper {
+      max-width: 400px; /* Menor no celular */
+    }
+
+    .text-block h2 {
+      text-align: center !important;
+    }
+  }
+
   /* Atividades */
   .activities-grid {
     display: grid;
@@ -804,24 +890,65 @@
     background: var(--orange);
     color: white;
   }
-  .mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 150px;
-    gap: 15px;
+  /* Wrapper do Carrossel Quem Somos */
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Garante o formato quadrado */
+    border-radius: var(
+      --radius-lg
+    ); /* Bordas bem redondas como o resto do site */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   }
-  .mosaic-item {
-    background-size: cover;
-    background-position: center;
-    border-radius: var(--radius-md);
-    background-color: rgba(255, 255, 255, 0.1);
+
+  .carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
   }
-  .mosaic-item.big {
-    grid-column: span 2;
-    grid-row: span 2;
+
+  .carousel-slide.active {
+    opacity: 1;
   }
-  .mosaic-item.wide {
-    grid-column: span 2;
+
+  .carousel-slide :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Indicadores visuais */
+  .carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transition: 0.3s;
+  }
+
+  .dot.active {
+    background: white;
+    transform: scale(1.3);
+  }
+
+  /* Ajuste Mobile */
+  @media (max-width: 1100px) {
+    .carousel-wrapper {
+      max-width: 500px;
+      margin: 0 auto; /* Centraliza no mobile antes do texto */
+    }
   }
 
   /* Contato e Botões */
