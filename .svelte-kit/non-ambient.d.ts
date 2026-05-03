@@ -38,6 +38,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/icon_canto.svg" | "/icon_danca.svg" | "/icon_teatro.svg" | "/logo.svg" | "/padronagem_d.svg" | "/robots.txt" | string & {};
+		Asset(): "/android-chrome-192x192.png" | "/android-chrome-512x512.png" | "/apple-touch-icon.png" | "/favicon-16x16.png" | "/favicon-32x32.png" | "/favicon.ico" | "/icon_canto.svg" | "/icon_danca.svg" | "/icon_teatro.svg" | "/logo.svg" | "/padronagem_d.svg" | "/robots.txt" | "/site.webmanifest" | string & {};
 	}
 }
