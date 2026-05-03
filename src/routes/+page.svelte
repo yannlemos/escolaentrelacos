@@ -6,27 +6,28 @@
   let activeSection = $state("");
   let isMenuOpen = $state(false); // <-- Nova variável para o menu
 
+  import hero1 from "$lib/assets/photos/hero/hero_1.jpg";
+  import hero2 from "$lib/assets/photos/hero/hero_2.jpg";
+  import hero3 from "$lib/assets/photos/hero/hero_3.jpg";
+  import hero4 from "$lib/assets/photos/hero/hero_4.jpg";
+  import hero5 from "$lib/assets/photos/hero/hero_5.jpg";
+  import hero6 from "$lib/assets/photos/hero/hero_6.jpg";
+
+  import qs1 from "$lib/assets/photos/quem-somos/qs_1.jpg";
+  import qs2 from "$lib/assets/photos/quem-somos/qs_2.jpg";
+  import qs3 from "$lib/assets/photos/quem-somos/qs_3.jpg";
+  import qs4 from "$lib/assets/photos/quem-somos/qs_4.jpg";
+  import qs5 from "$lib/assets/photos/quem-somos/qs_5.jpg";
+
   // Função para fechar o menu ao clicar em um link
   function handleNavClick(id: string) {
     isMenuOpen = false;
     scrollToSection(id);
   }
 
-  const heroImages: string[] = [
-    "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600&h=900&fit=crop",
-    "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=1600&h=900&fit=crop",
-    "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1600&h=900&fit=crop",
-  ];
+  const heroImages = [hero1, hero2, hero3, hero4, hero5, hero6];
 
-  const mosaicImages: string[] = [
-    "https://images.unsplash.com/photo-1502633013411-fb997ddd0e22?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1514525253361-bee8a48740d7?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&h=600&fit=crop",
-  ];
+  const mosaicImages = [qs1, qs2, qs3, qs4, qs5];
 
   function reveal(node: HTMLElement) {
     const observer = new IntersectionObserver(
@@ -123,7 +124,7 @@
       </li>
       <li>
         <a
-          href="https://wa.me/5521999999999"
+          href="https://wa.me/5521991082968"
           class="cta-nav"
           target="_blank"
           rel="noopener noreferrer"
@@ -141,7 +142,7 @@
       >
       <button onclick={() => handleNavClick("quem-somos")}>Quem Somos</button>
       <button onclick={() => handleNavClick("contato")}>Contato</button>
-      <a href="https://wa.me/5521999999999" class="cta-mobile" target="_blank">
+      <a href="https://wa.me/5521991082968" class="cta-mobile" target="_blank">
         AGENDE UMA AULA EXPERIMENTAL
       </a>
     </div>
@@ -151,15 +152,13 @@
 <main>
   <section class="hero">
     {#each heroImages as image, i}
-      <div
-        class="hero-bg"
-        class:active={i === currentHeroImage}
-        style:background-image="url({image})"
-      ></div>
+      <div class="hero-bg" class:active={i === currentHeroImage}>
+        <enhanced:img src={image} alt="Escola Entrelaços - Hero {i}" />
+      </div>
     {/each}
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-subtitle">Teatro, Dança e Música</p>
+      <p class="hero-subtitle">Teatro, Dança e Canto</p>
       <h1 class="hero-title">Em um só curso</h1>
       <p class="hero-age">Alunos de 6 a 15 anos</p>
     </div>
@@ -180,13 +179,9 @@
           style:transition-delay="0.1s"
         >
           <div class="icon-frame blue">
-            <img
-              src="{base}/icon_musica.svg"
-              alt="Música"
-              class="activity-svg"
-            />
+            <img src="{base}/icon_canto.svg" alt="Canto" class="activity-svg" />
           </div>
-          <h3 class="activity-title text-blue">Música</h3>
+          <h3 class="activity-title text-blue">Canto</h3>
           <p>
             Exploração rítmica e introdução aos instrumentos de forma lúdica.
           </p>
@@ -229,34 +224,21 @@
     <div class="container grid-split">
       <div class="mosaic-container">
         <div class="mosaic-grid">
-          <div
-            class="mosaic-item big"
-            style:background-image="url({mosaicImages[0]})"
-          ></div>
-          <div
-            class="mosaic-item"
-            style:background-image="url({mosaicImages[1]})"
-          ></div>
-          <div
-            class="mosaic-item"
-            style:background-image="url({mosaicImages[2]})"
-          ></div>
-          <div
-            class="mosaic-item wide"
-            style:background-image="url({mosaicImages[3]})"
-          ></div>
-          <div
-            class="mosaic-item"
-            style:background-image="url({mosaicImages[4]})"
-          ></div>
-          <div
-            class="mosaic-item"
-            style:background-image="url({mosaicImages[5]})"
-          ></div>
-          <div
-            class="mosaic-item"
-            style:background-image="url({mosaicImages[6]})"
-          ></div>
+          <div class="mosaic-item big">
+            <enhanced:img src={mosaicImages[0]} alt="" />
+          </div>
+          <div class="mosaic-item big">
+            <enhanced:img src={mosaicImages[1]} alt="" />
+          </div>
+          <div class="mosaic-item big">
+            <enhanced:img src={mosaicImages[2]} alt="" />
+          </div>
+          <div class="mosaic-item big">
+            <enhanced:img src={mosaicImages[3]} alt="" />
+          </div>
+          <div class="mosaic-item big">
+            <enhanced:img src={mosaicImages[4]} alt="" />
+          </div>
         </div>
       </div>
       <div class="text-block">
@@ -282,8 +264,11 @@
             Agende uma visita e venha conhecer nossa estrutura no centro da
             cidade.
           </p>
-          <p><strong>📍 Localização:</strong> Rua das Artes, 123 - Centro</p>
-          <p><strong>📞 WhatsApp:</strong> (21) 99999-9999</p>
+          <p>
+            <strong>📍 Localização:</strong> Rua São Clemente, 421, Botafogo, Rio
+            de Janeiro
+          </p>
+          <p><strong>📞 WhatsApp:</strong> (21) 99108-2968</p>
         </div>
 
         <div class="map-frame">
@@ -296,7 +281,7 @@
       </div>
 
       <div class="cta-footer-block">
-        <a href="https://wa.me/5521999999999" class="btn-long-cta">
+        <a href="https://wa.me/5521991082968" class="btn-long-cta">
           AGENDE UMA AULA EXPERIMENTAL
         </a>
       </div>
@@ -313,7 +298,7 @@
 
     <div class="social-links">
       <a
-        href="https://instagram.com/perfil-placeholder"
+        href="https://instagram.com/escolaentrelacos"
         class="social-btn insta"
         target="_blank"
         aria-label="Instagram"
@@ -332,7 +317,7 @@
       </a>
 
       <a
-        href="https://wa.me/5521999999999"
+        href="https://wa.me/5521991082968"
         class="social-btn whats"
         target="_blank"
         aria-label="WhatsApp"
@@ -351,7 +336,7 @@
       </a>
 
       <a
-        href="mailto:contato@placeholder.com.br"
+        href="mailto:escolaentrelacos@gmail.com"
         class="social-btn mail"
         aria-label="E-mail"
       >
@@ -396,6 +381,15 @@
     color: var(--dark);
     margin: 0;
     line-height: 1.8;
+  }
+
+  /* Faz as imagens otimizadas preencherem o container como background-cover */
+  .hero-bg :global(img),
+  .mosaic-item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .container {
