@@ -163,7 +163,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-subtitle">Teatro, Dança e Canto</p>
-      <h1 class="hero-title">Em um só curso</h1>
+      <h1 class="hero-title">Em um só curso!</h1>
       <p class="hero-age">Alunos de 6 a 15 anos</p>
     </div>
   </section>
@@ -172,8 +172,13 @@
     <div class="container centered-content">
       <h2 class="section-title">Como Funciona</h2>
       <p class="section-description">
-        Nossa metodologia integra as três artes em uma jornada única de
-        aprendizado e diversão.
+        Nós unimos <span style="color: var(--blue); font-weight: 900;"
+          >canto</span
+        >,
+        <span style="color: var(--pink); font-weight: 900;">interpretação</span>
+        e <span style="color: var(--orange); font-weight: 900;">dança</span> de maneira
+        lúdica e criativa, proporcionando o contato e a experimentação de crianças
+        e adolescentes com a linguagem do teatro musical.
       </p>
 
       <div class="activities-grid">
@@ -187,7 +192,9 @@
           </div>
           <h3 class="activity-title text-blue">Canto</h3>
           <p>
-            Exploração rítmica e introdução aos instrumentos de forma lúdica.
+            Exploramos a técnica vocal e expressão artística. Atividades de
+            aquecimento vocal, prática de canções em grupo e solos individuais
+            fortalecem a confiança e a autonomia.
           </p>
         </article>
 
@@ -204,7 +211,12 @@
             />
           </div>
           <h3 class="activity-title text-pink">Teatro</h3>
-          <p>Expressão corporal e improvisação para desenvolver a confiança.</p>
+          <p>
+            Exploramos o imaginário e construimos personagens e histórias.
+            Exercícios de improvisação e jogos teatrais estimulam a expressão, a
+            concentração e o trabalho artístico, sempre atentos às
+            particularidades de cada estudante.
+          </p>
         </article>
 
         <article
@@ -217,7 +229,10 @@
           </div>
           <h3 class="activity-title text-orange">Dança</h3>
           <p>
-            Movimento e consciência corporal através de coreografias vibrantes.
+            Exploramos a consciência corporal e a expressão por meio do
+            movimento. Aquecimentos, jogos rítmicos, exercícios de improvisação
+            e coreografias convidam o corpo a contar histórias e expressar
+            emoções.
           </p>
         </article>
       </div>
@@ -249,12 +264,23 @@
           Quem Somos
         </h2>
         <p>
-          A Escola Entrelaços nasceu da paixão por unir as artes performáticas
-          em um currículo único para crianças e jovens.
+          A Escola Entrelaços nasceu em 2025 da parceria de <strong
+            >Elis Loureiro</strong
+          >
+          (bailarina, cantora, atriz e professora de dança) com
+          <strong>Luisa Moraes</strong>
+          (atriz, professora de teatro e mestranda em ensino das artes cênicas).
         </p>
         <p>
-          Acreditamos que a arte é a ferramenta mais poderosa para o
-          desenvolvimento da criatividade e da autoconfiança.
+          Acreditamos que <strong
+            >formar um artista vai além do domínio técnico</strong
+          >: é preciso trabalhar sensibilidade, consciência corporal, escuta
+          musical e segurança emocional.
+        </p>
+        <p>
+          Estruturamos o curso com um olhar que combina
+          <strong>técnica, criatividade e afeto</strong>, sempre pensando no que
+          realmente faz diferença na trajetória de quem estuda o teatro musical.
         </p>
       </div>
     </div>
@@ -265,10 +291,6 @@
       <div class="grid-split contact-layout">
         <div class="text-block">
           <h2 class="section-title">Contato</h2>
-          <p>
-            Agende uma visita e venha conhecer nossa estrutura no centro da
-            cidade.
-          </p>
           <p>
             <strong>📍 Localização:</strong> Rua São Clemente, 421, Botafogo, Rio
             de Janeiro
@@ -388,8 +410,19 @@
     line-height: 1.8;
   }
 
+  p {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .hero-bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   /* Faz as imagens otimizadas preencherem o container como background-cover */
-  .hero-bg :global(img),
   .container {
     max-width: 1250px;
     margin: 0 auto;
@@ -617,23 +650,35 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    background-color: #000; /* Fallback preto */
   }
   .hero-bg {
     position: absolute;
-    inset: 0;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
     background-size: cover;
+    transform-origin: center center;
     background-position: center;
     opacity: 0;
     transition: 1.2s;
-    transform: scale(1); /* Estado inicial */
+    transform: scale(1.1); /* Estado inicial */
     transition:
       transform 6s ease-out,
       opacity 1.2s; /* Transição longa para o zoom */
+    transition:
+      transform 8s ease-out,
+      /* Aumentei o tempo para um movimento mais suave */ opacity 1.5s
+        ease-in-out;
+    z-index: 1;
   }
 
   .hero-bg.active {
     opacity: 1;
-    transform: scale(1.1); /* Leve aumento enquanto ativa */
+    /* O zoom vai de 1.1 para 1.25 para um efeito Ken Burns clássico */
+    transform: scale(1.25);
+    z-index: 2;
   }
   .hero-overlay {
     position: absolute;
@@ -724,6 +769,8 @@
   .section-description {
     font-size: 1.3rem;
     margin-bottom: 50px; /* Cortado pela metade (era 100px) */
+    margin-left: 10%;
+    margin-right: 10%;
   }
   #como-funciona .section-title {
     text-align: center;
@@ -890,6 +937,12 @@
     background: var(--orange);
     color: white;
   }
+
+  /* Mosaico */
+  .pink-bg {
+    background: var(--pink);
+    color: white;
+  }
   /* Wrapper do Carrossel Quem Somos */
   .carousel-wrapper {
     position: relative;
@@ -1029,6 +1082,10 @@
     height: 24px;
   }
 
+  strong {
+    font-weight: 900;
+  }
+
   /* Cores de hover para cada marca */
   .social-btn.insta:hover {
     background: radial-gradient(
@@ -1147,7 +1204,7 @@ ela vai aparecer e deve ser aplicada globalmente neste elemento" */
     opacity: 1;
   }
 
-  .section:not(.orange-bg) {
+  .section:not(.orange-bg, .pink-bg) {
     position: relative;
     background-color: var(--white);
     clip-path: inset(0);
