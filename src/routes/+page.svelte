@@ -192,7 +192,7 @@
           </div>
           <h3 class="activity-title text-blue">Canto</h3>
           <p>
-            Exploramos a técnica vocal e expressão artística. Atividades de
+            Unimos técnica vocal à expressão artística. Atividades de
             aquecimento vocal, prática de canções em grupo e solos individuais
             fortalecem a confiança e a autonomia.
           </p>
@@ -229,7 +229,7 @@
           </div>
           <h3 class="activity-title text-orange">Dança</h3>
           <p>
-            Exploramos a consciência corporal e a expressão por meio do
+            Trabalhamos a consciência corporal e a expressão por meio do
             movimento. Aquecimentos, jogos rítmicos, exercícios de improvisação
             e coreografias convidam o corpo a contar histórias e expressar
             emoções.
