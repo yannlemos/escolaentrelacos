@@ -11,7 +11,7 @@
 <svelte:head>
   <link rel="icon" href={favicon} />
 	<title>Escola Entrelaços</title>
-  <meta name="description" content="Teatro Musical no Rio de Janeiro" />
+  <meta name="description" content="Curso de Teatro Musical no Rio de Janeiro" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

@@ -162,7 +162,7 @@
     {/each}
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="hero-subtitle">Teatro musical no Rio de Janeiro</h1>
+      <h1 class="hero-subtitle">Curso de Teatro musical no Rio de Janeiro</h1>
       <p class="hero-title">Teatro, dança e canto<br>em um só curso!</p>
       <p class="hero-age">Alunos de 6 a 15 anos</p>
     </div>
