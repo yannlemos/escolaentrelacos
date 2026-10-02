@@ -157,13 +157,13 @@
   <section class="hero">
     {#each heroImages as image, i}
       <div class="hero-bg" class:active={i === currentHeroImage}>
-        <enhanced:img src={image} alt="Escola Entrelaços - Hero {i}" />
+        <enhanced:img src={image} alt="Diversas fotos mostrando apresentações de musicais da Escola Entrelaços{i}" />
       </div>
     {/each}
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-subtitle">Teatro, Dança e Canto</p>
-      <h1 class="hero-title">Em um só curso!</h1>
+      <h1 class="hero-subtitle">Teatro musical no Rio de Janeiro</h1>
+      <p class="hero-title">Teatro, dança e canto<br>em um só curso!</p>
       <p class="hero-age">Alunos de 6 a 15 anos</p>
     </div>
   </section>
@@ -188,7 +188,7 @@
           style:transition-delay="0.1s"
         >
           <div class="icon-frame blue">
-            <img src="{base}/icon_canto.svg" alt="Canto" class="activity-svg" />
+            <img src="{base}/icon_canto.svg" alt="Ícone de um microfone" class="activity-svg" />
           </div>
           <h3 class="activity-title text-blue">Canto</h3>
           <p>
@@ -206,7 +206,7 @@
           <div class="icon-frame pink">
             <img
               src="{base}/icon_teatro.svg"
-              alt="Teatro"
+              alt="Ícone do teatro, mostrando duas máscaras, uma feliz e outra triste."
               class="activity-svg"
             />
           </div>
@@ -225,7 +225,7 @@
           style:transition-delay="0.3s"
         >
           <div class="icon-frame orange">
-            <img src="{base}/icon_danca.svg" alt="Dança" class="activity-svg" />
+            <img src="{base}/icon_danca.svg" alt="Ícone de duas pessoas dançando" class="activity-svg" />
           </div>
           <h3 class="activity-title text-orange">Dança</h3>
           <p>
@@ -246,7 +246,7 @@
         <div class="carousel-wrapper">
           {#each mosaicImages as image, i}
             <div class="carousel-slide" class:active={i === currentMosaicIndex}>
-              <enhanced:img src={image} alt="Galeria Escola Entrelaços" />
+              <enhanced:img src={image} alt="Galeria com diversas fotos mostrando alunos em aulas de teatro, dança e canto." />
             </div>
           {/each}
 
@@ -319,7 +319,7 @@
 <footer class="footer">
   <div class="container footer-layout">
     <div class="footer-info">
-      <img src="{base}/logo.svg" alt="Escola Entrelaços" class="footer-logo" />
+      <img src="{base}/logo.svg" alt="Logo da Escola Entrelaços" class="footer-logo" />
       <p>© 2026 Escola Entrelaços. Todos os direitos reservados.</p>
     </div>
 
@@ -684,6 +684,7 @@
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.35);
+    z-index: 3;
   }
   .hero-content {
     position: relative;
@@ -693,7 +694,7 @@
     color: white;
   }
   .hero-title {
-    font-size: 5.5rem;
+    font-size: 5.0rem;
     font-weight: 900;
     line-height: 1.1;
     margin: 15px 0;
